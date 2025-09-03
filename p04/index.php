@@ -29,6 +29,64 @@
         echo '<li>$_element1 es válida porque inicia con guión bajo.</li>';
         echo '<li>$house*5 es inválida porque el símbolo * no está permitido.</li>';
         echo '</ul>';
+
+        /* ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- */
+
+        echo "<h2>Ejercicio 2</h2>";
+        $a = "ManejadorSQL";
+        $b = 'MySQL';
+        $c = &$a;
+
+        echo "<p>Muestra del contenido de cada variable</p>";
+        echo "\$a = $a <br>";
+        echo "\$b = $b <br>";
+        echo "\$c = $c <br>";
+
+        /// Modificacion de las variables originales (punto b)
+        $a = "PHP server";
+        $b = &$a;
+        
+        echo "<p>Muestra del contenido de cada variable con las asignaciones extra</p>";
+        echo "\$a = $a <br>";
+        echo "\$b = $b <br>";
+        echo "\$c = $c <br>";
+
+        echo '<h4>Explicación:</h4>';
+        echo "<p>Al modificar el valor de \$a, indirectamente modificamos también el valor de \$c, ya que esta variable contiene la referencia de a. Esto mismo sucede con la variable \$b. Entonces como las variables \$b y \$c son referencias de a, terminan mostrando el mismo contenido que \$a</p>";
+
+        /* ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- */
+
+        echo "<h2>Ejercicio 3</h2>";
+        echo "<p>Muestra el contenido de cada variable inmediatamente después de cada aasignación, verificar la evolución de tipo de estas variables (imprime todos los componentes del arreglo):</p>";
+
+        $a = "PHP5";
+        echo "\$a = $a <br>";
+        
+        $z[] = &$a;
+        echo "\$z = ";
+        print_r($z);
+        echo "<br>";
+        
+        $b = "5a version de PHP";
+        echo "\$b = $b";
+        echo "<br>";
+
+        @$c = $b * 10;
+        echo "\$c = $c";
+        echo "<br>";
+
+        $a .= $b;
+        echo "\$a = $a";
+        echo "<br>";
+        
+        @$b *= $c;
+        echo "\$b = $b";
+        echo "<br>";
+
+        $z[0] = "MySQL";
+        echo "\$z = ";
+        print_r($z);
+        echo "<br>";
     ?>
 </body>
 </html>
