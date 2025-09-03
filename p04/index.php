@@ -117,6 +117,23 @@
         echo "\$c = ";
         var_dump($GLOBALS['c']);
         echo "<br>";
+
+        /* ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- */
+
+        echo "<h2>Ejercicio 5</h2>";
+        echo "<p>Dar el valor de las variables \$a, \$b, \$c al final del siguiente script:</p>";
+        echo "\$a = \"7 personas\" <br>";
+        echo "\$b = (integer) \$a <br>";
+        echo "\$a = \"9E3\" <br>";
+        echo "\$c = (double) \$a <br><br>";
+
+        echo "\$a = $a <br>";
+        echo "\$b = $b <br>";
+        echo "\$c = $c <br>";
+
+         /* ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- */
+         
+
     ?>
 </body>
 </html>
