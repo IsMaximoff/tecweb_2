@@ -87,6 +87,36 @@
         echo "\$z = ";
         print_r($z);
         echo "<br>";
+
+        /* ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- ---------- */
+
+        echo "<h2>Ejercicio 4</h2>";
+        echo "<p>Lee y muestra los valores de las variables del ejercicio anterior, pero ahora con la ayuda de la matriz \$GLOBALS o del modificador global de PHP</p>";
+
+        unset($a, $b, $c, $z);
+        $a = "PHP5";
+        $z[] = &$a;
+        $b = "5a version de PHP";
+        @$c = $b * 10;
+        $a .= $b;
+        @$b *= $c;
+        $z[0] = "MySQL";
+        
+        echo "\$a = ";
+        var_dump($GLOBALS['a']);
+        echo "<br>";
+
+        echo "\$z = ";
+        var_dump($GLOBALS['z']);
+        echo "<br>";
+
+        echo "\$b = ";
+        var_dump($GLOBALS['b']);
+        echo "<br>";
+
+        echo "\$c = ";
+        var_dump($GLOBALS['c']);
+        echo "<br>";
     ?>
 </body>
 </html>
