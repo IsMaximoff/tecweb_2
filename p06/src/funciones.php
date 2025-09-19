@@ -49,3 +49,190 @@
         echo "<p>$numGenerados números obtenidos en $iteraciones iteraciones </p>";
     }
 ?>
+
+<?php
+/*EJERCICIO 3 --------------------------------------------------------------------------------------------------------------*/
+    function multiplo_While()
+    {
+        $divisor = (int) $_GET['numero'];
+        $iteracion = 0;
+        $numeroRand = rand(1, 1000);
+
+        while($numeroRand % $divisor !== 0) {
+            $iteracion++;
+            $numeroRand = rand(1, 1000);
+        }
+        $iteracion++;
+        echo "<p>USANDO WHILE: Se encontró el número random $numeroRand como divisor de $divisor en $iteracion iteraciones</p>";
+        
+    }
+
+    function multiplo_DoWhile()
+    {
+        $divisor = (int) $_GET['numero'];
+        $iteracion = 0;
+
+        do{
+            $numeroRand = rand(1, 1000);
+            $iteracion++;
+        }while($numeroRand % $divisor !== 0);
+
+        $iteracion++;
+        echo "<p>USANDO DO-WHILE: Se encontró el número random $numeroRand como divisor de $divisor en $iteracion iteraciones</p>";
+        
+    }
+?>
+
+<?php
+/*EJERCICIO 4 --------------------------------------------------------------------------------------------------------------*/
+    function ASCII_Caracteres() {
+        $arreglo = array();
+        for ($i = 97; $i <= 122; $i++) {
+            $arreglo[$i] = chr($i);
+        }
+
+        echo "<table border = '1' cellspacing = '0' cellpading = '5'>"; 
+        echo "<tr> <th>ASCII</th> <th>Caracter</th> </tr>";
+
+        foreach($arreglo as $key => $value) {
+            echo "<tr>";
+            echo "<td>$key</td>";
+            echo "<td>$value</td>";
+            echo "</tr>";
+        }
+
+        echo "</table>";
+    }    
+?>
+
+<?php
+// Verifica si el formulario fue enviado vía POST.
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Se obtienen los datos enviados desde el formulario.
+    $edad = isset($_POST['edad']) ? (int) $_POST['edad'] : 0;
+    $sexo = isset($_POST['sexo']) ? trim($_POST['sexo']) : "";
+
+    // Verifica que se haya ingresado el sexo y la edad.
+    if ($sexo === "" || $edad === 0) {
+        $mensaje = "Por favor, ingrese datos válidos.";
+    } else {
+        // Evaluar si es una mujer (femenino) en el rango de edad 18 a 35.
+        if ($sexo === "femenino" && $edad >= 18 && $edad <= 35) {
+            $mensaje = "Bienvenida, usted está en el rango de edad permitido.";
+        } else {
+            $mensaje = "Lo siento, usted no cumple con los requisitos de edad o sexo.";
+        }
+    }
+
+    // Generar la respuesta XHTML.
+    // IMPORTANTE: En documentos XHTML, se recomienda incluir la declaración XML y el DOCTYPE.
+    echo '<?xml version="1.0" encoding="UTF-8"?>'; 
+    ?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+      "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+      <head>
+        <title>Respuesta</title>
+      </head>
+      <body>
+        <h2>Resultado</h2>
+        <p><?php echo $mensaje; ?></p>
+      </body>
+    </html>
+    <?php
+    exit(); // Finaliza la ejecución, ya que ya se mostró la respuesta.
+}
+?>
+
+<?php
+/*EJERCICIO 4 --------------------------------------------------------------------------------------------------------------*/
+function verificarEdadSexo() {
+    $edad = isset($_POST['edad']) ? (int)$_POST['edad'] : 0;
+    $sexo = isset($_POST['sexo']) ? trim($_POST['sexo']) : "";
+
+    $mensaje = "";
+
+    if ($sexo === "femenino" && $edad >= 18 && $edad <= 35) {
+        $mensaje = "Bienvenida, usted está en el rango de edad permitido";
+    } else {
+        $mensaje = "Lo siento, usted no cumple con los requisitos de edad o sexo";
+    }
+
+    //Respuesta adaptada a html5
+    echo '<!DOCTYPE html>';
+    echo '<html lang="es">';
+    echo '<head><meta charset="UTF-8"><title>Resultado del Ejercicio 5</title></head>';
+    echo '<body>';
+    echo '<h2>Resultado del Ejercicio 5</h2>';
+    echo '<p>' . htmlspecialchars($mensaje) . '</p>';
+    echo '<a href="index.php">Volver al formulario</a>';
+    echo '</body></html>';
+}
+?>
+
+
+
+
+<?php
+function nolologreunavezmas($matricula){
+    $Listado = [
+        "MOR1234" => [
+            "Auto" => [
+                "Marca" => "Mazda",
+                "Modelo" => 2022,
+                "Tipo" => "Sedán"
+            ],
+            "Propietario" => [
+                "Nombre" => "Luis Hernández",
+                "Ciudad" => "Cuernavaca",
+                "Dirección" => "Av. Plan de Ayala 101"
+            ]
+        ],
+        "MOR5678" => [
+            "Auto" => [
+                "Marca" => "Honda",
+                "Modelo" => 2021,
+                "Tipo" => "Hatchback"
+            ],
+            "Propietario" => [
+                "Nombre" => "Ana Torres",
+                "Ciudad" => "Jiutepec",
+                "Dirección" => "Calle Las Flores 202"
+            ]
+        ],
+        "MOR9012" => [
+            "Auto" => [
+                "Marca" => "Chevrolet",
+                "Modelo" => 2020,
+                "Tipo" => "Camioneta"
+            ],
+            "Propietario" => [
+                "Nombre" => "Carlos Ramírez",
+                "Ciudad" => "Yautepec",
+                "Dirección" => "Av. Insurgentes 303"
+            ]
+        ],
+        "MOR3456" => [
+            "Auto" => [
+                "Marca" => "Toyota",
+                "Modelo" => 2023,
+                "Tipo" => "SUV"
+            ],
+            "Propietario" => [
+                "Nombre" => "Elena Gómez",
+                "Ciudad" => "Cuautla",
+                "Dirección" => "Calle Morelos 404"
+            ]
+        ]
+    ];
+
+    if(isset($Listado[$matricula])){
+        echo "<h3>La información solicitada es la siguiente:</h3>";
+        echo "<pre>";
+        print_r($Listado[$matricula]);
+        echo "</pre>";
+    } else {
+        echo "<p>No se encontró la matrícula '$matricula'</p>";
+    }
+}
+?>
